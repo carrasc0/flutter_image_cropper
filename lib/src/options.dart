@@ -238,6 +238,10 @@ class IOSUiSettings {
   /// Title for the 'Cancel' button.
   /// Setting this will override the Default which is a localized string for "Cancel".
   final String? cancelButtonTitle;
+  
+  /// desired aspect ratio is applied (from the list of given aspect ratio presets)
+  /// when starting the cropper
+  final CropAspectRatioPreset? initAspectRatio;
 
   const IOSUiSettings({
     this.minimumAspectRatio,
@@ -258,6 +262,7 @@ class IOSUiSettings {
     this.title,
     this.doneButtonTitle,
     this.cancelButtonTitle,
+    this.initAspectRatio,
   });
 
   Map<String, dynamic> toMap() => {
@@ -282,6 +287,8 @@ class IOSUiSettings {
         'ios.title': this.title,
         'ios.done_button_title': this.doneButtonTitle,
         'ios.cancel_button_title': this.cancelButtonTitle,
+        'ios.init_aspect_ratio':
+        aspectRatioPresetName(this.initAspectRatio),
       };
 }
 
